@@ -6,10 +6,12 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
+import com.example.lib.DataManager;
 
 public class MainActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
+    private DataManager dataManager;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
