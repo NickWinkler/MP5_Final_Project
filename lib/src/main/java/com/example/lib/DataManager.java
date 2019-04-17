@@ -12,7 +12,7 @@ public class DataManager {
     // The main list of all data
     List<LocationItem> locationItems;
 
-    DataManager() {
+    public DataManager() {
         //create the list
     }
 
