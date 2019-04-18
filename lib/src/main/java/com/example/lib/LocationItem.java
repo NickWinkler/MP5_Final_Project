@@ -9,12 +9,12 @@ public class LocationItem {
     private int machineUsage;
     private int machineCount;
 
-    LocationItem(/* Data from API */) {
-        // Set items to the api data
+    LocationItem(final String setName) {
+        name = setName;
     }
 
     public String getName() {
-        return "";
+        return name;
     }
 
     public int getTime() {

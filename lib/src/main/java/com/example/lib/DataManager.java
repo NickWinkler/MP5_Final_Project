@@ -2,6 +2,8 @@ package com.example.lib;
 import java.util.List;
 import java.util.ArrayList;
 
+import sun.rmi.runtime.Log;
+
 /**
  * Manage the list of data.
  * Should also retrieve API data and update list.
@@ -9,19 +11,27 @@ import java.util.ArrayList;
  */
 
 public class DataManager {
-    // The main list of all data
+    /** The main list of all data */
     List<LocationItem> locationItems;
 
+    /** Tag for logging */
+    private final String TAG = "DataManager";
+
     public DataManager() {
-        //create the list
+        createList();
     }
 
     private void createList() {
-        //create the list
-        //updateData
+        System.out.println("Creating list of locations");
+        locationItems = new ArrayList<>();
+        for (LocationNames locationName: LocationNames.values()) {
+            locationItems.add(new LocationItem(locationName.name().replace('_', ' ')));
+        }
+        updateData();
     }
 
     public void updateData() {
+        Log.d(TAG, "Updating Data");
         //get api
         //seperate JSON
         //update the list of data with api data
