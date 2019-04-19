@@ -13,6 +13,7 @@ import com.example.lib.DataManager;
 public class MainActivity extends AppCompatActivity {
 
     private DataManager dataManager;
+    private Fragment[] fragments = new Fragment[3];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +22,11 @@ public class MainActivity extends AppCompatActivity {
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
+        fragments[0] = new FavoritesFragment();
+        fragments[1] = new AllLabsFragment();
+        fragments[2] = new MapFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                new FavoritesFragment()).commit();
+                fragments[0]).commit();
 
         dataManager = new DataManager();
     }
@@ -35,13 +39,13 @@ public class MainActivity extends AppCompatActivity {
 
                     switch (menuItem.getItemId()) {
                         case R.id.nav_favorites:
-                            selectedFragment = new FavoritesFragment();
+                            selectedFragment = fragments[0];
                             break;
                         case R.id.nav_all_Labs:
-                            selectedFragment = new AllLabsFragment();
+                            selectedFragment = fragments[1];
                             break;
                         case R.id.nav_map:
-                            selectedFragment = new MapFragment();
+                            selectedFragment = fragments[2];
                             break;
                     }
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
