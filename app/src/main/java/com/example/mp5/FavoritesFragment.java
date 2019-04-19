@@ -10,6 +10,24 @@ import android.view.ViewGroup;
 
 public class FavoritesFragment extends Fragment {
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        System.out.println("Favorites Fragment Created");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        System.out.println("Favorites Fragment Paused");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        System.out.println("Favorites Fragment Resumed");
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
