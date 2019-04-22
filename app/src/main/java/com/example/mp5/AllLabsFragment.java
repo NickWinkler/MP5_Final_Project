@@ -35,7 +35,7 @@ public class AllLabsFragment extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
 
-        adapter = new LabListAdapter();
+        //adapter = new LabListAdapter();
 
         recyclerView.setAdapter(adapter);
         return view;

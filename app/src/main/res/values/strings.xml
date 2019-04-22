@@ -1,6 +1,8 @@
 <resources>
-    <string name="app_name">MP5</string>
+    <string name="app_name">EWS Usage</string>
     <string name="title_favorites">Favorites</string>
     <string name="title_all_labs">All Labs</string>
     <string name="title_map">Map</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_refresh">Refresh</string>
 </resources>
