@@ -1,55 +1,50 @@
 package com.example.mp5;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class LabListAdapter extends RecyclerView.Adapter {
-    private String[] mDataset;
+import java.util.LinkedList;
 
-    // Provide a reference to the views for each data item
-    // Complex data items may need more than one view per item, and
-    // you provide access to all the views for a data item in a view holder
-    public static class MyViewHolder extends RecyclerView.ViewHolder {
-        // each data item is just a string in this case
-        public TextView textView;
-        public MyViewHolder(TextView v) {
-            super(v);
-            textView = v;
+public class LabListAdapter extends RecyclerView.Adapter<LabListAdapter.LabListViewHolder> {
+
+    private final LinkedList<String> wordList;
+    private LayoutInflater inflater;
+
+    public LabListAdapter(Context context, LinkedList<String> wordList) {
+        inflater = LayoutInflater.from(context);
+        this.wordList = wordList;
+    }
+
+    class LabListViewHolder extends RecyclerView.ViewHolder {
+        public final TextView textView;
+        final LabListAdapter adapter;
+        public LabListViewHolder(@NonNull View itemView, LabListAdapter adapter) {
+            super(itemView);
+            textView = itemView.findViewById(R.id.textView);
+            this.adapter = adapter;
         }
     }
 
-    // Provide a suitable constructor (depends on the kind of dataset)
-    public LabListAdapter(String[] myDataset) {
-        mDataset = myDataset;
-    }
-
-    // Create new views (invoked by the layout manager)
+    @NonNull
     @Override
-    public LabListAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent,
-                                                     int viewType) {
-        // create a new view
-        TextView v = (TextView) LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.lab_list_item, parent, false);
-        MyViewHolder vh = new MyViewHolder(v);
-        return vh;
+    public LabListViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        View view = inflater.inflate(R.layout.lab_list_item, viewGroup, false);
+        return new LabListViewHolder(view, this);
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
-        // - get element from your dataset at this position
-        // - replace the contents of the view with that element
-        //viewHolder.textView.setText(mDataset[position]);
-
+    public void onBindViewHolder(@NonNull LabListViewHolder labListViewHolder, int position) {
+        String current = wordList.get(position);
+        labListViewHolder.textView.setText(current);
     }
 
-
-    // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return mDataset.length;
+        return wordList.size();
     }
 }
