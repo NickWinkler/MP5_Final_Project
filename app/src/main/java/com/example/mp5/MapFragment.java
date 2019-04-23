@@ -24,6 +24,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     GoogleMap mGoogleMap;
     MapView mMapView;
     View mView;
+    ViewGroup activityView;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
