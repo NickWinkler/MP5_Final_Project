@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
+import com.example.lib.DataManager;
 import com.example.lib.LocationItem;
 import com.example.lib.LocationNames;
 

@@ -5,6 +5,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Manage the list of data.
@@ -13,22 +14,27 @@ import java.util.ArrayList;
  */
 public class DataManager {
     /** The main list of all data */
-    List<LocationItem> locationItems;
+    private static List<LocationItem> locationItems;
 
     /** Tag for logging */
     private static final String TAG = "DataManager";
 
-    public DataManager() {
-        createList();
-    }
+    private static Random random = new Random();
 
-    private void createList() {
+    public static void create() {
         System.out.println("Creating list of locations");
         locationItems = new ArrayList<>();
         for (LocationNames locationName: LocationNames.values()) {
-            locationItems.add(new LocationItem(locationName.name().replace('_', ' ')));
+            int usage = random.nextInt(36);
+            locationItems.add(new LocationItem(locationName.name().replace('_', ' '), null,
+                    random.nextInt(15), usage, (int) (usage * random.nextFloat() + usage)));
         }
-        updateData();
+        //updateData();
+    }
+
+    public static List<LocationItem> getLocationItems() {
+        System.out.println("Returning locations");
+        return locationItems;
     }
 
     public void updateData() {

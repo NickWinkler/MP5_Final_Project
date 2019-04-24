@@ -9,8 +9,12 @@ public class LocationItem {
     private int machineUsage;
     private int machineCount;
 
-    LocationItem(final String setName) {
+    LocationItem(final String setName, Object setCoord, int setTime, int setMUsage, int setMCount) {
         name = setName;
+        coordinates = setCoord;
+        time = setTime;
+        machineUsage = setMUsage;
+        machineCount = setMCount;
     }
 
     public String getName() {
@@ -18,14 +22,14 @@ public class LocationItem {
     }
 
     public int getTime() {
-        return 0;
+        return time;
     }
 
     public int getMachineUsage() {
-        return 0;
+        return machineUsage;
     }
 
     public int getMachineCount() {
-        return 0;
+        return machineCount;
     }
 }

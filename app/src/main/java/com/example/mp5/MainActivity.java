@@ -14,12 +14,12 @@ import com.example.lib.DataManager;
 
 public class MainActivity extends AppCompatActivity {
 
-    private DataManager dataManager;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        DataManager.create();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
         bottomNav.setOnNavigationItemSelectedListener(navListener);
         bottomNav.setSelectedItemId(R.id.nav_favorites);
 
-        dataManager = new DataManager();
     }
 
     @Override
@@ -43,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                     Fragment selectedFragment = null;
+
 
                     switch (menuItem.getItemId()) {
                         case R.id.nav_favorites:

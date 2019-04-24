@@ -11,7 +11,12 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.lib.DataManager;
+import com.example.lib.LocationItem;
+
 import java.util.LinkedList;
+import java.util.List;
+import java.util.zip.DataFormatException;
 
 public class LabListAdapter extends RecyclerView.Adapter<LabListAdapter.LabListViewHolder> {
 
@@ -25,11 +30,15 @@ public class LabListAdapter extends RecyclerView.Adapter<LabListAdapter.LabListV
 
     class LabListViewHolder extends RecyclerView.ViewHolder {
         public final TextView lab_name;
+        public final TextView machine_count;
+        public final TextView walk_time;
         public final ImageButton fav_button;
         final LabListAdapter adapter;
         public LabListViewHolder(@NonNull View itemView, LabListAdapter adapter) {
             super(itemView);
             lab_name = itemView.findViewById(R.id.lab_name_text);
+            machine_count = itemView.findViewById(R.id.machine_count_text);
+            walk_time = itemView.findViewById(R.id.walk_time_text);
             fav_button = itemView.findViewById(R.id.favorite_button);
             this.adapter = adapter;
         }
@@ -44,8 +53,10 @@ public class LabListAdapter extends RecyclerView.Adapter<LabListAdapter.LabListV
 
     @Override
     public void onBindViewHolder(@NonNull final LabListViewHolder labListViewHolder, final int position) {
-        String current = wordList.get(position);
-        labListViewHolder.lab_name.setText(current);
+        LocationItem location = DataManager.getLocationItems().get(position);
+        labListViewHolder.lab_name.setText(location.getName());
+        labListViewHolder.walk_time.setText(location.getTime());
+        labListViewHolder.machine_count.setText(location.getMachineUsage() + "/" + location.getMachineCount());
         labListViewHolder.fav_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

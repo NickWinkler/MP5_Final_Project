@@ -1,6 +1,7 @@
 package com.example.mp5;
 
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.lib.DataManager;
 import com.example.lib.LocationNames;
 
 import java.util.LinkedList;
@@ -19,6 +21,7 @@ import java.util.LinkedList;
 public class FavoritesFragment extends Fragment {
 
     private RecyclerView recyclerView;
+    private TextView emptyText;
     private LabListAdapter adapter;
     private final LinkedList<String> wordList = new LinkedList<>();
 
