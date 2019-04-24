@@ -20,8 +20,8 @@ import java.util.zip.DataFormatException;
 
 public class LabListAdapter extends RecyclerView.Adapter<LabListAdapter.LabListViewHolder> {
 
-    private final List<String> wordList;
-    private LayoutInflater inflater;
+    private final List<LocationItem> wordList;
+    protected LayoutInflater inflater;
 
     public LabListAdapter(Context context, List<LocationItem> wordList) {
         inflater = LayoutInflater.from(context);
@@ -41,13 +41,13 @@ public class LabListAdapter extends RecyclerView.Adapter<LabListAdapter.LabListV
             walk_time = itemView.findViewById(R.id.walk_time_text);
             fav_button = itemView.findViewById(R.id.favorite_button);
             this.adapter = adapter;
-            System.out.println("Just set views");
         }
     }
 
     @NonNull
     @Override
     public LabListViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        System.out.println("View holder created");
         View view = inflater.inflate(R.layout.lab_list_item, viewGroup, false);
         return new LabListViewHolder(view, this);
     }
@@ -63,12 +63,7 @@ public class LabListAdapter extends RecyclerView.Adapter<LabListAdapter.LabListV
         labListViewHolder.fav_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                location.flipFavorites();
-                List<LocationItem> list = DataManager.getFavoriteItems();
-                list.remove(position);
-                notifyItemRemoved(position);
-                notifyItemRangeChanged(position, list.size());
-                Toast toast = Toast.makeText(inflater.getContext(), "Flipping Favorite State for " + list.get(position),
+                Toast toast = Toast.makeText(inflater.getContext(), "Flipping Favorite State for " + wordList.get(position),
                         Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.BOTTOM|Gravity.BOTTOM, 0, 175);
                 toast.show();
@@ -78,6 +73,6 @@ public class LabListAdapter extends RecyclerView.Adapter<LabListAdapter.LabListV
 
     @Override
     public int getItemCount() {
-        return DataManager.getFavoriteItems().size();
+        return DataManager.getLocationItems().size();
     }
 }
