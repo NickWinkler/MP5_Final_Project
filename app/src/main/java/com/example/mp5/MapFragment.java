@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
@@ -62,15 +63,15 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        Context notNull = this.getContext(); //error here !! -- "cannot find symbol method getContext()"
-        if (notNull != null) {
-            MapsInitializer.initialize(notNull);
-        }
+        MapsInitializer.initialize(getContext());
 
         mGoogleMap = googleMap;
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
         googleMap.addMarker(new MarkerOptions().position(new LatLng(40.689247, -74.044582)).title("Statue of Liberty").snippet("I hope to go here"));
 
+        CameraPosition Liberty = CameraPosition.builder().target(new LatLng(40.689247, -74.044502)).zoom(16).bearing(0).tilt(45).build();
+
+        googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(Liberty));
     }
 }
