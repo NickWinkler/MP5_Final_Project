@@ -15,6 +15,7 @@ import java.util.Random;
 public class DataManager {
     /** The main list of all data */
     private static List<LocationItem> locationItems;
+    private static List<LocationItem> favoriteItems;
 
     /** Tag for logging */
     private static final String TAG = "DataManager";
@@ -27,6 +28,7 @@ public class DataManager {
             int usage = random.nextInt(36);
             locationItems.add(new LocationItem(locationName.name().replace('_', ' '), 0, 0,
                     random.nextInt(15), usage, (int) (usage * random.nextFloat() + usage)));
+            if (locationName)
         }
         //updateData();
     }

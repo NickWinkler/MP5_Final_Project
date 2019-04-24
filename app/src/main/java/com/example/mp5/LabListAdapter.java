@@ -64,11 +64,10 @@ public class LabListAdapter extends RecyclerView.Adapter<LabListAdapter.LabListV
             @Override
             public void onClick(View v) {
                 location.flipFavorites();
-                if(v.equals(imgViewRemoveIcon)){
-                    removeAt(getPosition());
-                }else if (mItemClickListener != null) {
-                    mItemClickListener.onItemClick(v, getPosition());
-                }
+                location.flipFavorites();
+                wordList.remove(position);
+                notifyItemRemoved(position);
+                notifyItemRangeChanged(position, wordList.size());
                 Toast toast = Toast.makeText(inflater.getContext(), "Flipping Favorite State for " + wordList.get(position),
                         Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.BOTTOM|Gravity.BOTTOM, 0, 175);
