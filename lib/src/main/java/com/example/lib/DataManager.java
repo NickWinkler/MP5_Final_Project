@@ -24,11 +24,13 @@ public class DataManager {
 
     public static void create() {
         locationItems = new ArrayList<>();
-        for (LocationNames locationName: LocationNames.values()) {
+        for (Object[] location : LocationData.locationData) {
             int usage = random.nextInt(36);
-            locationItems.add(new LocationItem(locationName.name().replace('_', ' '), 0, 0,
-                    random.nextInt(15), usage, (int) (usage * random.nextFloat() + usage)));
-            if (locationName)
+            LocationItem locationItem = new LocationItem(location[0].toString(), 0, 0,
+                    random.nextInt(15), usage, (int) (usage * random.nextFloat() + usage), false);
+            locationItems.add(locationItem);
+            // Add items to favorites list here
+
         }
         //updateData();
     }

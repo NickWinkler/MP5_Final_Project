@@ -10,14 +10,14 @@ public class LocationItem {
     private boolean isFavorites;
 
     LocationItem(final String setName, double setLatitude, double setLongitude, int setTime,
-                 int setMUsage, int setMCount) {
+                 int setMUsage, int setMCount, boolean setFavorite) {
         name = setName;
         latitude = setLatitude;
         longitude = setLongitude;
         time = setTime;
         machineUsage = setMUsage;
         machineCount = setMCount;
-        isFavorites = false;
+        isFavorites = setFavorite;
     }
 
     public String getName() {
