@@ -25,7 +25,7 @@ public class LabListAdapter extends RecyclerView.Adapter<LabListAdapter.LabListV
         final LabListAdapter adapter;
         public LabListViewHolder(@NonNull View itemView, LabListAdapter adapter) {
             super(itemView);
-            textView = itemView.findViewById(R.id.textView);
+            textView = itemView.findViewById(R.id.lab_name_text);
             this.adapter = adapter;
         }
     }
