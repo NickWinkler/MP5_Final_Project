@@ -41,6 +41,7 @@ public class LabListAdapter extends RecyclerView.Adapter<LabListAdapter.LabListV
             walk_time = itemView.findViewById(R.id.walk_time_text);
             fav_button = itemView.findViewById(R.id.favorite_button);
             this.adapter = adapter;
+            System.out.println("Just set views");
         }
     }
 
@@ -54,9 +55,11 @@ public class LabListAdapter extends RecyclerView.Adapter<LabListAdapter.LabListV
     @Override
     public void onBindViewHolder(@NonNull final LabListViewHolder labListViewHolder, final int position) {
         LocationItem location = DataManager.getLocationItems().get(position);
+        System.out.println("Setting text");
         labListViewHolder.lab_name.setText(location.getName());
-        labListViewHolder.walk_time.setText(location.getTime());
-        labListViewHolder.machine_count.setText(location.getMachineUsage() + "/" + location.getMachineCount());
+        labListViewHolder.walk_time.setText(Integer.toString(location.getTime()) + " mins");
+        labListViewHolder.machine_count.setText(Integer.toString(location.getMachineUsage()) +
+                "/" + Integer.toString(location.getMachineCount()));
         labListViewHolder.fav_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

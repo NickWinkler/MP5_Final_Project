@@ -4,14 +4,17 @@ import javax.xml.stream.Location;
 
 public class LocationItem {
     private String name;
-    private Object coordinates;
+    private double latitude;
+    private double longitude;
     private int time;
     private int machineUsage;
     private int machineCount;
 
-    LocationItem(final String setName, Object setCoord, int setTime, int setMUsage, int setMCount) {
+    LocationItem(final String setName, double setLatitude, double setLongitude, int setTime,
+                 int setMUsage, int setMCount) {
         name = setName;
-        coordinates = setCoord;
+        latitude = setLatitude;
+        longitude = setLongitude;
         time = setTime;
         machineUsage = setMUsage;
         machineCount = setMCount;
@@ -31,5 +34,13 @@ public class LocationItem {
 
     public int getMachineCount() {
         return machineCount;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
     }
 }
