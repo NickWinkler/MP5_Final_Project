@@ -63,6 +63,7 @@ public class LabListAdapter extends RecyclerView.Adapter<LabListAdapter.LabListV
         labListViewHolder.fav_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                DataManager.addFavorite(DataManager.getLocationItems().get(labListViewHolder.getAdapterPosition()));
                 Toast toast = Toast.makeText(inflater.getContext(), "Flipping Favorite State for " + wordList.get(position),
                         Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.BOTTOM|Gravity.BOTTOM, 0, 175);

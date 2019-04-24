@@ -32,7 +32,7 @@ public class DataManager {
             locationItems.add(locationItem);
             // Add items to favorites list here
             if (locationItem.getIsFavorite()) {
-                favoriteItems.add(locationItem);
+//                favoriteItems.add(locationItem);
             }
         }
         //updateData();
