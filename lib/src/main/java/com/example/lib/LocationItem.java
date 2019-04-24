@@ -17,6 +17,7 @@ public class LocationItem {
         time = setTime;
         machineUsage = setMUsage;
         machineCount = setMCount;
+        isFavorites = false;
     }
 
     public String getName() {
@@ -41,5 +42,13 @@ public class LocationItem {
 
     public double getLongitude() {
         return longitude;
+    }
+
+    public boolean getIsFavorite() {
+        return isFavorites;
+    }
+
+    public void flipFavorites() {
+        isFavorites = !isFavorites;
     }
 }

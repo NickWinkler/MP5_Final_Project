@@ -54,7 +54,7 @@ public class LabListAdapter extends RecyclerView.Adapter<LabListAdapter.LabListV
 
     @Override
     public void onBindViewHolder(@NonNull final LabListViewHolder labListViewHolder, final int position) {
-        LocationItem location = DataManager.getLocationItems().get(position);
+        final LocationItem location = DataManager.getLocationItems().get(position);
         System.out.println("Setting text");
         labListViewHolder.lab_name.setText(location.getName());
         labListViewHolder.walk_time.setText(Integer.toString(location.getTime()) + " mins");
@@ -63,6 +63,12 @@ public class LabListAdapter extends RecyclerView.Adapter<LabListAdapter.LabListV
         labListViewHolder.fav_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                location.flipFavorites();
+                if(v.equals(imgViewRemoveIcon)){
+                    removeAt(getPosition());
+                }else if (mItemClickListener != null) {
+                    mItemClickListener.onItemClick(v, getPosition());
+                }
                 Toast toast = Toast.makeText(inflater.getContext(), "Flipping Favorite State for " + wordList.get(position),
                         Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.BOTTOM|Gravity.BOTTOM, 0, 175);

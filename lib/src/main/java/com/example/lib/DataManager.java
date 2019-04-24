@@ -22,7 +22,6 @@ public class DataManager {
     private static Random random = new Random();
 
     public static void create() {
-        System.out.println("Creating list of locations");
         locationItems = new ArrayList<>();
         for (LocationNames locationName: LocationNames.values()) {
             int usage = random.nextInt(36);
