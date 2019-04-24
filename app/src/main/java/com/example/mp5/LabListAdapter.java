@@ -20,10 +20,10 @@ import java.util.zip.DataFormatException;
 
 public class LabListAdapter extends RecyclerView.Adapter<LabListAdapter.LabListViewHolder> {
 
-    private final LinkedList<String> wordList;
+    private final List<String> wordList;
     private LayoutInflater inflater;
 
-    public LabListAdapter(Context context, LinkedList<String> wordList) {
+    public LabListAdapter(Context context, List<LocationItem> wordList) {
         inflater = LayoutInflater.from(context);
         this.wordList = wordList;
     }
@@ -64,11 +64,11 @@ public class LabListAdapter extends RecyclerView.Adapter<LabListAdapter.LabListV
             @Override
             public void onClick(View v) {
                 location.flipFavorites();
-                location.flipFavorites();
-                wordList.remove(position);
+                List<LocationItem> list = DataManager.getFavoriteItems();
+                list.remove(position);
                 notifyItemRemoved(position);
-                notifyItemRangeChanged(position, wordList.size());
-                Toast toast = Toast.makeText(inflater.getContext(), "Flipping Favorite State for " + wordList.get(position),
+                notifyItemRangeChanged(position, list.size());
+                Toast toast = Toast.makeText(inflater.getContext(), "Flipping Favorite State for " + list.get(position),
                         Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.BOTTOM|Gravity.BOTTOM, 0, 175);
                 toast.show();
@@ -78,6 +78,6 @@ public class LabListAdapter extends RecyclerView.Adapter<LabListAdapter.LabListV
 
     @Override
     public int getItemCount() {
-        return wordList.size();
+        return DataManager.getFavoriteItems().size();
     }
 }

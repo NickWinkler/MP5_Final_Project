@@ -18,22 +18,24 @@ import com.example.lib.DataManager;
 import com.example.lib.LocationItem;
 import com.example.lib.LocationNames;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 public class AllLabsFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private LabListAdapter adapter;
-    private final LinkedList<String> wordList = new LinkedList<>();
+    private List<LocationItem> wordList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_all_labs, container, false);
         recyclerView = view.findViewById(R.id.recycler_view);
-        for (LocationNames locationName: LocationNames.values()) {
-            wordList.add(locationName.name().replace('_', ' '));
-        }
-        adapter = new LabListAdapter(container.getContext(), wordList);
+
+        wordList = DataManager.getLocationItems();
+
+        adapter = new LabListAdapter(container.getContext(), DataManager.getLocationItems());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(container.getContext()));
         recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL));
