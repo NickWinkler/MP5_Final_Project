@@ -1,7 +1,5 @@
 package com.example.lib;
 
-import javax.xml.stream.Location;
-
 public class LocationItem {
     private String name;
     private double latitude;
@@ -9,6 +7,7 @@ public class LocationItem {
     private int time;
     private int machineUsage;
     private int machineCount;
+    private boolean isFavorites;
 
     LocationItem(final String setName, double setLatitude, double setLongitude, int setTime,
                  int setMUsage, int setMCount) {

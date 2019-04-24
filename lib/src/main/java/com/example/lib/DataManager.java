@@ -26,7 +26,7 @@ public class DataManager {
         locationItems = new ArrayList<>();
         for (LocationNames locationName: LocationNames.values()) {
             int usage = random.nextInt(36);
-            locationItems.add(new LocationItem(locationName.name().replace('_', ' '), null,
+            locationItems.add(new LocationItem(locationName.name().replace('_', ' '), 0, 0,
                     random.nextInt(15), usage, (int) (usage * random.nextFloat() + usage)));
         }
         //updateData();
