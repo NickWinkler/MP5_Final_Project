@@ -14,6 +14,8 @@ public class LocationData {
                     {"EH 406B8", false},
                     {"ESPL", false},
                     {"FAR TRE 231", false},
+                    {"GELIB 4C", false},
+                    {"GELIB 4E", false},
                     {"MEL 1001", false},
                     {"MEL 1009", false},
                     {"PAR 104", false},

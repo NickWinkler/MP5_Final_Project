@@ -69,10 +69,13 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         mGoogleMap = googleMap;
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
-        googleMap.addMarker(new MarkerOptions().position(new LatLng(40.689247, -74.044582)).title("Statue of Liberty").snippet("I hope to go here"));
+        googleMap.addMarker(new MarkerOptions().position(new LatLng(40.689247, -74.044582)).title("Statue of Liberty").snippet("I hope to go here").visible(true));
+        googleMap.addMarker(new MarkerOptions().position(new LatLng(40.113122, -88.226256)).title("DCL L416").visible(true));
+        googleMap.addMarker(new MarkerOptions().position(new LatLng(40.113122, -88.226256)).title("DCL 426").visible(true));
 
         CameraPosition Liberty = CameraPosition.builder().target(new LatLng(40.689247, -74.044502)).zoom(16).bearing(0).tilt(45).build();
+        CameraPosition MainQuad = CameraPosition.builder().target(new LatLng(40.113122, -88.226256)).zoom(18).bearing(0).tilt(45).build();
 
-        googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(Liberty));
+        googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(MainQuad));
     }
 }
