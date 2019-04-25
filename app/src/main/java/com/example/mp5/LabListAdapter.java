@@ -66,7 +66,7 @@ public class LabListAdapter extends RecyclerView.Adapter<LabListAdapter.LabListV
                 DataManager.addFavorite(DataManager.getLocationItems().get(labListViewHolder.getAdapterPosition()));
                 Toast toast = Toast.makeText(inflater.getContext(), "Flipping Favorite State for " + wordList.get(position),
                         Toast.LENGTH_SHORT);
-                toast.setGravity(Gravity.BOTTOM|Gravity.BOTTOM, 0, 175);
+                toast.setGravity(Gravity.BOTTOM, 0, 175);
                 toast.show();
             }
         });

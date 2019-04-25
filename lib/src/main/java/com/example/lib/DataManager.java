@@ -1,18 +1,22 @@
 package com.example.lib;
 import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
+import java.util.concurrent.CompletableFuture;
 
 /**
  * Manage the list of data.
  * Should also retrieve API data and update list.
  * Return specific subsets of the list (favorites).
  */
-public class DataManager {
+public class DataManager extends CompletableFuture.AsynchronousCompletionTask {
     /** The main list of all data */
     private static List<LocationItem> locationItems;
     private static List<LocationItem> favoriteItems;
@@ -35,7 +39,7 @@ public class DataManager {
 //                favoriteItems.add(locationItem);
             }
         }
-        //updateData();
+        updateData();
     }
 
     public static List<LocationItem> getLocationItems() {
@@ -54,16 +58,18 @@ public class DataManager {
         favoriteItems.add(newFav);
     }
 
-    public void updateData() {
+    public static void updateData() {
         //get api
         //seperate JSON
         //update the list of data with api data
         //update locationitems time, etc.
 
-        // Get the
+        // Get the json
+        String json = jsonGetRequest("https://my.engr.illinois.edu/labtrack/util_data_json.asp?callback=?");
+        System.out.println(json);
         /*
         try {
-            URL url = new URL("http://example.com");
+            URL url = new URL("https://my.engr.illinois.edu/labtrack/util_data_json.asp?callback=?");
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             connection.connect();
@@ -79,6 +85,26 @@ public class DataManager {
             connection.disconnect();
         } catch (Exception e) {
             System.out.println(e.getMessage());
-        } */
+        }*/
+    }
+
+    public static String jsonGetRequest(String urlQueryString) {
+        String json = null;
+        try {
+            URL url = new URL(urlQueryString);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setDoOutput(true);
+            connection.setInstanceFollowRedirects(false);
+            connection.setRequestMethod("GET");
+            connection.setRequestProperty("Content-Type", "application/json");
+            connection.setRequestProperty("charset", "utf-8");
+            connection.connect();
+            InputStream inStream = connection.getInputStream();
+            json = new Scanner(inStream, "UTF-8").useDelimiter("\\Z").next();// input stream to string
+        } catch (Exception ex) {
+            System.out.println("Can't get EWS data: " + ex);
+            ex.printStackTrace();
+        }
+        return json;
     }
 }
