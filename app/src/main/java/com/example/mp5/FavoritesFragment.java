@@ -37,48 +37,10 @@ public class FavoritesFragment extends Fragment {
                 break;
             }
         }
-        adapter = new LabListAdapter(container.getContext(), wordList);
+        adapter = new FavLabListAdapter(container.getContext(), DataManager.getFavoriteItems());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(container.getContext()));
         recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL));
         return view;
-    }
-
-    /**
-     * A Simple Adapter for the RecyclerView
-     */
-    public class SimpleRVAdapter extends RecyclerView.Adapter<AllLabsFragment.SimpleViewHolder> {
-        private String[] dataSource;
-        public SimpleRVAdapter(String[] dataArgs){
-            dataSource = dataArgs;
-        }
-
-        @Override
-        public AllLabsFragment.SimpleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = new TextView(parent.getContext());
-            AllLabsFragment.SimpleViewHolder viewHolder = new AllLabsFragment.SimpleViewHolder(view);
-            return viewHolder;
-        }
-
-        @Override
-        public void onBindViewHolder(AllLabsFragment.SimpleViewHolder holder, int position) {
-            holder.textView.setText(dataSource[position]);
-        }
-
-        @Override
-        public int getItemCount() {
-            return dataSource.length;
-        }
-    }
-
-    /**
-     * A Simple ViewHolder for the RecyclerView
-     */
-    public static class SimpleViewHolder extends RecyclerView.ViewHolder{
-        public TextView textView;
-        public SimpleViewHolder(View itemView) {
-            super(itemView);
-            textView = (TextView) itemView;
-        }
     }
 }

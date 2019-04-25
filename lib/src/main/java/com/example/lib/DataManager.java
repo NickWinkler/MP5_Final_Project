@@ -24,20 +24,34 @@ public class DataManager {
 
     public static void create() {
         locationItems = new ArrayList<>();
+        favoriteItems = new ArrayList<>();
         for (Object[] location : LocationData.locationData) {
             int usage = random.nextInt(36);
             LocationItem locationItem = new LocationItem(location[0].toString(), 0, 0,
-                    random.nextInt(15), usage, (int) (usage * random.nextFloat() + usage), false);
+                    random.nextInt(15), usage, (int) (usage * random.nextFloat() + usage), random.nextBoolean());
             locationItems.add(locationItem);
             // Add items to favorites list here
-
+            if (locationItem.getIsFavorite()) {
+//                favoriteItems.add(locationItem);
+            }
         }
         //updateData();
     }
 
     public static List<LocationItem> getLocationItems() {
-        System.out.println("Returning locations");
         return locationItems;
+    }
+
+    public static List<LocationItem> getFavoriteItems() {
+        return favoriteItems;
+    }
+
+    public static void removeFavorite(int position) {
+        favoriteItems.remove(position);
+    }
+
+    public static void addFavorite(LocationItem newFav) {
+        favoriteItems.add(newFav);
     }
 
     public void updateData() {
