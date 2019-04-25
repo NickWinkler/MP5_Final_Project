@@ -1,4 +1,4 @@
-package com.example.lib;
+package com.example.mp5;
 
 public class LocationItem {
     private String name;

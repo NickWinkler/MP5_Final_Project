@@ -6,9 +6,6 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.lib.DataManager;
-import com.example.lib.LocationItem;
-
 import java.util.List;
 
 public class FavLabListAdapter extends LabListAdapter {

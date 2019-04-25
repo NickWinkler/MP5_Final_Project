@@ -11,12 +11,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.lib.DataManager;
-import com.example.lib.LocationItem;
-
-import java.util.LinkedList;
 import java.util.List;
-import java.util.zip.DataFormatException;
 
 public class LabListAdapter extends RecyclerView.Adapter<LabListAdapter.LabListViewHolder> {
 
