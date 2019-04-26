@@ -48,6 +48,16 @@ public class LocationItem {
         return isFavorites;
     }
 
+    public int getFill() {
+        float percentage = getMachineUsage() / getMachineCount();
+        if (percentage >= 0 && percentage <= 0.333) {
+            return -1;
+        } else if (percentage >= 0.333 && percentage <= 0.6667) {
+            return 0;
+        }
+        return 1;
+    }
+
     public void setTime(String setTime) {time = setTime;}
 
     public void setMachineUsage(int setMachineUsage) {
