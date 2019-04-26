@@ -82,7 +82,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                 color = halfFull;
             }
             googleMap.addMarker(new MarkerOptions().position(new LatLng(locationItem.getLatitude(),
-                    locationItem.getLongitude())).title(locationItem.getName()).icon(BitmapDescriptorFactory.defaultMarker(color)).visible(true));
+                    locationItem.getLongitude())).title(locationItem.getName()).icon(BitmapDescriptorFactory.defaultMarker(color)).snippet("Time: " + locationItem.getTime()).visible(true));
         }
         //set camera position on the Bardeen quad
         CameraPosition bardeenQuad = CameraPosition.builder().target(new LatLng(40.111691, -88.227062)).zoom(17).bearing(0).tilt(45).build();
