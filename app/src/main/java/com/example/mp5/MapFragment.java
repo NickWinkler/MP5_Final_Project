@@ -93,6 +93,5 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             //set camera position on current location
             googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(currentLoc));
         }
-
     }
 }

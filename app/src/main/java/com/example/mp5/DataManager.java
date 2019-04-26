@@ -1,5 +1,7 @@
 package com.example.mp5;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.provider.ContactsContract;
 import android.util.Log;
@@ -92,6 +94,22 @@ public class DataManager extends AsyncTask<MainActivity, String, String>  {
 
     public static void addFavorite(LocationItem newFav) {
         favoriteItems.add(newFav);
+    }
+
+    public static void startIntent(String labName) {
+        String latitude = "0";
+        String longitude = "0";
+        for (LocationItem locationItem : getLocationItems()) {
+            if (locationItem.getName().equals(labName)) {
+                latitude = String.valueOf(locationItem.getLatitude());
+                longitude = String.valueOf(locationItem.getLatitude());
+                break;
+            }
+        }
+        Uri gmmIntentUri = Uri.parse("google.navigation:q=" + latitude + "," + longitude + "&mode=w");
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps.");
+        mainActivity.startActivity(mapIntent);
     }
 
     @Override
