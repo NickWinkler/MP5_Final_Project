@@ -47,7 +47,7 @@ public class DataManager extends AsyncTask<MainActivity, String, String>  {
         for (String[] location : LocationData.locationData) {
             int usage = random.nextInt(36);
             LocationItem locationItem = new LocationItem(location[0].toString(), Double.valueOf(location[2]),
-                    Double.valueOf(location[3]), 0, 0, 0, Boolean.valueOf(location[1]));
+                    Double.valueOf(location[3]), "0 minutes", 0, 0, Boolean.valueOf(location[1]));
             locationItems.add(locationItem);
             // Add items to favorites list here
             if (locationItem.getIsFavorite()) {

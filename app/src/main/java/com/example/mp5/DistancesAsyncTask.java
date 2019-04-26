@@ -5,31 +5,36 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
+import android.util.JsonWriter;
+import android.widget.Toast;
 
 import com.example.lib.LocationData;
-import com.google.android.gms.location.LocationServices;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import com.google.gson.*;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 
 public class DistancesAsyncTask extends AsyncTask<String, String, String> {
     private final String API_KEY = "AIzaSyDkJezIq93KVGDpJarXLIqsxs2-xg7nL9c";
-    private Context mainContext;
+    private MainActivity mainActivity;
 
-    public DistancesAsyncTask(Context context) {
-        mainContext = context;
+    public DistancesAsyncTask(MainActivity setMainActivity) {
+        mainActivity = setMainActivity;
     }
 
     @Override
     protected String doInBackground(String... strings) {
         try {
 
-            LocationManager lm = (LocationManager) mainContext.getSystemService(mainContext.LOCATION_SERVICE);
+            LocationManager lm = (LocationManager) mainActivity.getSystemService(mainActivity.LOCATION_SERVICE);
             Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
             double longitude = location.getLongitude();
             double latitude = location.getLatitude();
@@ -64,7 +69,6 @@ public class DistancesAsyncTask extends AsyncTask<String, String, String> {
 
             while ((line = reader.readLine()) != null) {
                 buffer.append(line+"\n");
-                //Log.d("Response: ", "> " + line);   //here u ll get whole response...... :-)
 
             }
 
@@ -82,6 +86,20 @@ public class DistancesAsyncTask extends AsyncTask<String, String, String> {
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
-
+        String toastMessage;
+        try {
+            JSONArray jsonArray = new JSONObject(s).getJSONArray("rows").getJSONObject(0).getJSONArray("elements");
+            List<LocationItem> tempList = DataManager.getLocationItems();
+            for (int i = 0; i < tempList.size(); i++) {
+                tempList.get(i).setTime((String) jsonArray.getJSONObject(i).getJSONObject("duration").get("text"));
+            }
+            System.out.println(jsonArray.toString());
+            toastMessage = "Data Updated";
+        } catch (Exception e) {
+            e.printStackTrace();
+            toastMessage = "Error. Try again later.";
+        }
+        Toast.makeText(mainActivity, toastMessage, Toast.LENGTH_SHORT).show();
+        mainActivity.updateUI();
     }
 }

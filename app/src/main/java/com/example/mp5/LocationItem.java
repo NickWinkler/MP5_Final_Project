@@ -4,12 +4,12 @@ public class LocationItem {
     private String name;
     private double latitude;
     private double longitude;
-    private int time;
+    private String time;
     private int machineUsage;
     private int machineCount;
     private boolean isFavorites;
 
-    LocationItem(final String setName, double setLatitude, double setLongitude, int setTime,
+    LocationItem(final String setName, double setLatitude, double setLongitude, String setTime,
                  int setMUsage, int setMCount, boolean setFavorite) {
         name = setName;
         latitude = setLatitude;
@@ -24,7 +24,7 @@ public class LocationItem {
         return name;
     }
 
-    public int getTime() {
+    public String getTime() {
         return time;
     }
 
@@ -47,6 +47,8 @@ public class LocationItem {
     public boolean getIsFavorite() {
         return isFavorites;
     }
+
+    public void setTime(String setTime) {time = setTime;}
 
     public void setMachineUsage(int setMachineUsage) {
         machineUsage = setMachineUsage;
