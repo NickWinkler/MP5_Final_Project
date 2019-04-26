@@ -13,8 +13,6 @@ import com.example.lib.LocationData;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import com.google.gson.*;
-
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;

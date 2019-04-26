@@ -49,13 +49,13 @@ public class LocationItem {
     }
 
     public int getFill() {
-        float percentage = getMachineUsage() / getMachineCount();
+        double percentage = ((double) getMachineUsage()) / ((double) getMachineCount());
         if (percentage >= 0 && percentage <= 0.333) {
-            return -1;
+            return -1; //returns -1 if usage is LOW
         } else if (percentage >= 0.333 && percentage <= 0.6667) {
-            return 0;
+            return 0; //returns 0 if usage is MED
         }
-        return 1;
+        return 1; //returns 1 if usage is HI
     }
 
     public void setTime(String setTime) {time = setTime;}

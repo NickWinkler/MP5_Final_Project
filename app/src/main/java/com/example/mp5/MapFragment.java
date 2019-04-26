@@ -75,8 +75,14 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         }
         */
         for (LocationItem locationItem : DataManager.getLocationItems()) {
+            float color = 0.0f;
+            if (locationItem.getFill() == -1) {
+                color = notFull;
+            } else if (locationItem.getFill() == 0) {
+                color = halfFull;
+            }
             googleMap.addMarker(new MarkerOptions().position(new LatLng(locationItem.getLatitude(),
-                    locationItem.getLongitude())).title(locationItem.getName()).visible(true));
+                    locationItem.getLongitude())).title(locationItem.getName()).icon(BitmapDescriptorFactory.defaultMarker(color)).visible(true));
         }
         //set camera position on the Bardeen quad
         CameraPosition bardeenQuad = CameraPosition.builder().target(new LatLng(40.111691, -88.227062)).zoom(17).bearing(0).tilt(45).build();
