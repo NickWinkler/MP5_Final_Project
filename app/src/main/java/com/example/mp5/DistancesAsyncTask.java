@@ -36,7 +36,9 @@ public class DistancesAsyncTask extends AsyncTask<String, String, String> {
             Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
             double longitude = location.getLongitude();
             double latitude = location.getLatitude();
-            System.out.println("Getting distances in background");
+            DataManager.setCurLatitude(latitude);
+            DataManager.setCurLongitude(longitude);
+            System.out.println("Currently at " + longitude + ", " + longitude);
 
             String url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&mode=walking";
             url = url + "&origins=" + latitude + "," + longitude;
@@ -91,7 +93,6 @@ public class DistancesAsyncTask extends AsyncTask<String, String, String> {
             for (int i = 0; i < tempList.size(); i++) {
                 tempList.get(i).setTime((String) jsonArray.getJSONObject(i).getJSONObject("duration").get("text"));
             }
-            System.out.println(jsonArray.toString());
             toastMessage = "Data Updated";
         } catch (Exception e) {
             e.printStackTrace();

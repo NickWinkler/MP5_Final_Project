@@ -6,6 +6,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.lib.LocationData;
+import com.google.android.gms.maps.model.LatLng;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -30,6 +31,9 @@ public class DataManager extends AsyncTask<MainActivity, String, String>  {
     /** The main list of all data */
     private static List<LocationItem> locationItems;
     private static List<LocationItem> favoriteItems;
+
+    private static double curLatitude = 0;
+    private static double curLongitude = 0;
 
     private static MainActivity mainActivity;
 
@@ -64,6 +68,14 @@ public class DataManager extends AsyncTask<MainActivity, String, String>  {
 
     public static List<LocationItem> getFavoriteItems() {
         return favoriteItems;
+    }
+
+    public static void setCurLatitude(double setLatitude) {
+        curLatitude = setLatitude;
+    }
+
+    public static void setCurLongitude(double setCurLongitude) {
+        curLongitude = setCurLongitude;
     }
 
     public static void removeFavorite(int position) {
