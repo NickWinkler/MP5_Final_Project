@@ -3,4 +3,9 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="labName"></color>
+    <color name="travelTime"></color>
+    <color name="labFull"></color>
+    <color name="labHalfFull"></color>
+    <color name="labEmpty">#4286f4</color>
 </resources>

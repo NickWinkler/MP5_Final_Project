@@ -52,8 +52,8 @@ public class LabListAdapter extends RecyclerView.Adapter<LabListAdapter.LabListV
         final LocationItem location = DataManager.getLocationItems().get(position);
         System.out.println("Setting text");
         labListViewHolder.lab_name.setText(location.getName());
-        labListViewHolder.walk_time.setText(location.getTime());
-        labListViewHolder.machine_count.setText(Integer.toString(location.getMachineUsage()) +
+        labListViewHolder.walk_time.setText("Travel Time: " + location.getTime());
+        labListViewHolder.machine_count.setText("Usage: " + Integer.toString(location.getMachineUsage()) +
                 "/" + Integer.toString(location.getMachineCount()));
         labListViewHolder.fav_button.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -31,7 +31,6 @@ public class DistancesAsyncTask extends AsyncTask<String, String, String> {
     @Override
     protected String doInBackground(String... strings) {
         try {
-
             LocationManager lm = (LocationManager) mainActivity.getSystemService(mainActivity.LOCATION_SERVICE);
             Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
             double longitude = location.getLongitude();
