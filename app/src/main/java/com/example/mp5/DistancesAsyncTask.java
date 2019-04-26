@@ -10,7 +10,7 @@ import com.example.lib.LocationData;
 import com.google.android.gms.location.LocationServices;
 
 public class DistancesAsyncTask extends AsyncTask<String, String, String> {
-    private final String API_KEY = "";
+    private final String API_KEY = "AIzaSyDkJezIq93KVGDpJarXLIqsxs2-xg7nL9c";
     private Context mainContext;
 
     public DistancesAsyncTask(Context context) {
