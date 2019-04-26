@@ -43,10 +43,10 @@ public class DataManager extends AsyncTask<MainActivity, String, String> {
     public static void create() {
         locationItems = new ArrayList<>();
         favoriteItems = new ArrayList<>();
-        for (Object[] location : LocationData.locationData) {
+        for (String[] location : LocationData.locationData) {
             int usage = random.nextInt(36);
-            LocationItem locationItem = new LocationItem(location[0].toString(), 0, 0,
-                    random.nextInt(15), usage, (int) (usage * random.nextFloat() + usage), random.nextBoolean());
+            LocationItem locationItem = new LocationItem(location[0].toString(), Double.valueOf(location[2]),
+                    Double.valueOf(location[3]), 0, 0, 0, Boolean.valueOf(location[1]));
             locationItems.add(locationItem);
             // Add items to favorites list here
             if (locationItem.getIsFavorite()) {
