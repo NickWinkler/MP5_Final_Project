@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.lib.LocationData;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -64,6 +65,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         mGoogleMap = googleMap;
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
+        for (String[] location : LocationData.locationData) {
+            googleMap.addMarker(new MarkerOptions().position(new LatLng(Double.valueOf(location[2]),
+                    Double.valueOf(location[3]))).title(location[0]).visible(true));
+        }
+        /*
         //DCL markers
         googleMap.addMarker(new MarkerOptions().position(new LatLng(40.113183, -88.226328)).title("DCL L416").visible(true));
         googleMap.addMarker(new MarkerOptions().position(new LatLng(40.113175, -88.226435)).title("DCL L426").visible(true));
@@ -109,6 +115,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         googleMap.addMarker(new MarkerOptions().position(new LatLng(40.111471, -88.225280)).title("TB 207").visible(true));
         googleMap.addMarker(new MarkerOptions().position(new LatLng(40.111898, -88.225280)).title("TB 302").visible(true));
         googleMap.addMarker(new MarkerOptions().position(new LatLng(40.111922, -88.225119)).title("TB 316").visible(true));
+        */
 
         //set camera position on the main quad
         CameraPosition MainQuad = CameraPosition.builder().target(new LatLng(40.108376, -88.227210)).zoom(17).bearing(0).tilt(45).build();
