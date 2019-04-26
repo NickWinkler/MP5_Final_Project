@@ -54,6 +54,7 @@ public class DataManager extends AsyncTask<MainActivity, String, String>  {
                 favoriteItems.add(locationItem);
             }
         }
+        new DistancesAsyncTask(mainActivity).execute();
         new DataManager().execute(mainActivity);
     }
 

@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
         DataManager.create(this);
 
+
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
