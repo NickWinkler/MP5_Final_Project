@@ -31,7 +31,7 @@ public class DataManager extends AsyncTask<MainActivity, String, String>  {
     private static List<LocationItem> locationItems;
     private static List<LocationItem> favoriteItems;
 
-    private MainActivity mainActivity;
+    private static MainActivity mainActivity;
 
     private static final String url = "https://my.engr.illinois.edu/labtrack/util_data_json.asp?callback=?";
 
@@ -40,7 +40,8 @@ public class DataManager extends AsyncTask<MainActivity, String, String>  {
 
     private static Random random = new Random();
 
-    public static void create() {
+    public static void create(MainActivity setMainActivity) {
+        mainActivity = setMainActivity;
         locationItems = new ArrayList<>();
         favoriteItems = new ArrayList<>();
         for (String[] location : LocationData.locationData) {
@@ -53,6 +54,7 @@ public class DataManager extends AsyncTask<MainActivity, String, String>  {
                 favoriteItems.add(locationItem);
             }
         }
+        new DataManager().execute(mainActivity);
     }
 
     public static List<LocationItem> getLocationItems() {
