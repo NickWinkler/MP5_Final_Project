@@ -26,7 +26,7 @@ import java.util.Random;
  * Should also retrieve API data and update list.
  * Return specific subsets of the list (favorites).
  */
-public class DataManager extends AsyncTask<MainActivity, String, String> {
+public class DataManager extends AsyncTask<MainActivity, String, String>  {
     /** The main list of all data */
     private static List<LocationItem> locationItems;
     private static List<LocationItem> favoriteItems;
@@ -146,4 +146,5 @@ public class DataManager extends AsyncTask<MainActivity, String, String> {
         Toast.makeText(mainActivity, toastMessage, Toast.LENGTH_SHORT).show();
         mainActivity.updateUI();
     }
+
 }
