@@ -70,6 +70,14 @@ public class DataManager extends AsyncTask<MainActivity, String, String>  {
         return favoriteItems;
     }
 
+    public static double getCurLatitude() {
+        return curLatitude;
+    }
+
+    public static double getCurLongitude() {
+        return curLongitude;
+    }
+
     public static void setCurLatitude(double setLatitude) {
         curLatitude = setLatitude;
     }

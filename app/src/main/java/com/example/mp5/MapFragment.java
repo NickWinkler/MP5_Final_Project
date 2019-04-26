@@ -1,6 +1,7 @@
 package com.example.mp5;
 
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -68,12 +69,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         mGoogleMap = googleMap;
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-        /*
-        for (String[] location : LocationData.locationData) {
-            googleMap.addMarker(new MarkerOptions().position(new LatLng(Double.valueOf(location[2]),
-                    Double.valueOf(location[3]))).title(location[0]).visible(true));
-        }
-        */
+
         for (LocationItem locationItem : DataManager.getLocationItems()) {
             float color = 0.0f;
             if (locationItem.getFill() == -1) {
@@ -84,9 +80,19 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             googleMap.addMarker(new MarkerOptions().position(new LatLng(locationItem.getLatitude(),
                     locationItem.getLongitude())).title(locationItem.getName()).icon(BitmapDescriptorFactory.defaultMarker(color)).snippet("Time: " + locationItem.getTime()).visible(true));
         }
-        //set camera position on the Bardeen quad
-        CameraPosition bardeenQuad = CameraPosition.builder().target(new LatLng(40.111691, -88.227062)).zoom(17).bearing(0).tilt(45).build();
 
-        googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(bardeenQuad));
+        googleMap.addMarker(new MarkerOptions().position(new LatLng(DataManager.getCurLatitude(), DataManager.getCurLongitude())).title("You :)").icon(BitmapDescriptorFactory.defaultMarker(currentLocation)).visible(true));
+
+        CameraPosition bardeenQuad = CameraPosition.builder().target(new LatLng(40.111691, -88.227062)).zoom(17).bearing(0).tilt(45).build();
+        CameraPosition currentLoc = CameraPosition.builder().target(new LatLng(DataManager.getCurLatitude(), DataManager.getCurLongitude())).zoom(17).bearing(0).tilt(45).build();
+
+        if (DataManager.getCurLatitude() == 0 || DataManager.getCurLongitude() == 0) {
+            //set camera position on the Bardeen quad if current location is invalid
+            googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(bardeenQuad));
+        } else {
+            //set camera position on current location
+            googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(currentLoc));
+        }
+
     }
 }
