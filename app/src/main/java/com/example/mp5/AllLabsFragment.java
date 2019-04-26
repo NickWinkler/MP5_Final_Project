@@ -13,6 +13,7 @@ public class AllLabsFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private LabListAdapter adapter;
+    private DataManager dataManager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -24,5 +25,13 @@ public class AllLabsFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(container.getContext()));
         recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL));
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        System.out.println("Resuming All Labs Fragment");
+        adapter.notifyItemRangeChanged(0, DataManager.getLocationItems().size());
+
     }
 }

@@ -19,24 +19,28 @@ public class FavoritesFragment extends Fragment {
     private RecyclerView recyclerView;
     private TextView emptyText;
     private LabListAdapter adapter;
-    private final LinkedList<String> wordList = new LinkedList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_all_labs, container, false);
         recyclerView = view.findViewById(R.id.recycler_view);
-        int count = 0;
-        for (LocationNames locationName: LocationNames.values()) {
-            wordList.add(locationName.name().replace('_', ' '));
-            count++;
-            if (count == 3) {
-                break;
-            }
-        }
+
         adapter = new FavLabListAdapter(container.getContext(), DataManager.getFavoriteItems());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(container.getContext()));
         recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL));
         return view;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        System.out.println("Resuming Fav Fragment");
+        adapter.notifyItemRangeChanged(0, DataManager.getFavoriteItems().size());
     }
 }

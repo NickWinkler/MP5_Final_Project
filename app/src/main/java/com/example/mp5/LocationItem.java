@@ -48,6 +48,14 @@ public class LocationItem {
         return isFavorites;
     }
 
+    public void setMachineUsage(int setMachineUsage) {
+        machineUsage = setMachineUsage;
+    }
+
+    public void setMachineCount(int setMachineCount) {
+        machineCount = setMachineCount;
+    }
+
     public void flipFavorites() {
         isFavorites = !isFavorites;
     }
