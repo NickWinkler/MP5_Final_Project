@@ -68,10 +68,6 @@ public class MainActivity extends AppCompatActivity {
             new DistancesAsyncTask(this).execute();
         }
 
-        if (id == R.id.action_settings) {
-            DataManager.startIntent("DCL L440");
-        }
-
         return super.onOptionsItemSelected(item);
     }
 

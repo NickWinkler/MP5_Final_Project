@@ -96,22 +96,6 @@ public class DataManager extends AsyncTask<MainActivity, String, String>  {
         favoriteItems.add(newFav);
     }
 
-    public static void startIntent(String labName) {
-        String latitude = "0";
-        String longitude = "0";
-        for (LocationItem locationItem : getLocationItems()) {
-            if (locationItem.getName().equals(labName)) {
-                latitude = String.valueOf(locationItem.getLatitude());
-                longitude = String.valueOf(locationItem.getLatitude());
-                break;
-            }
-        }
-        Uri gmmIntentUri = Uri.parse("google.navigation:q=" + latitude + "," + longitude + "&mode=w");
-        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-        mapIntent.setPackage("com.google.android.apps.maps.");
-        mainActivity.startActivity(mapIntent);
-    }
-
     @Override
     protected String doInBackground(MainActivity... mainActivities) {
         //Get the JSON from the URL and return it as a string.
