@@ -166,8 +166,7 @@ public class DataManager extends AsyncTask<MainActivity, String, String>  {
             e.printStackTrace();
             toastMessage = "Error. Try again later.";
         }
-        Toast.makeText(mainActivity, toastMessage, Toast.LENGTH_SHORT).show();
-        mainActivity.updateUI();
+        mainActivity.updateUI(toastMessage);
     }
 
 }

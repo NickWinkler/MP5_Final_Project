@@ -12,9 +12,11 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.drawable.DrawerArrowDrawable;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -71,11 +73,14 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void updateUI() {
+    public void updateUI(String toastMessage) {
         System.out.println("Updating UI");
         Fragment current = getSupportFragmentManager().findFragmentByTag("Current Fragment");
         getSupportFragmentManager().beginTransaction().detach(current).commit();
         getSupportFragmentManager().beginTransaction().attach(current).commit();
+        Toast toast = Toast.makeText(this, toastMessage, Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.BOTTOM, 0, 175);
+        toast.show();
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =

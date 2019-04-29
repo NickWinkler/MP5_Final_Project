@@ -15,7 +15,7 @@
         android:textAllCaps="true"
         android:textSize="22sp"
         android:textStyle="bold"
-        app:layout_constraintLeft_toRightOf="@id/colorInidicator"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -25,7 +25,7 @@
         android:layout_margin="8dp"
         android:text="Usage: 42/52"
         android:textSize="16sp"
-        app:layout_constraintLeft_toRightOf="@id/colorInidicator"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lab_name_text" />
 
     <TextView
@@ -35,7 +35,7 @@
         android:layout_margin="8dp"
         android:text="Travel Time: 5 minutes"
         android:textSize="16sp"
-        app:layout_constraintLeft_toRightOf="@id/colorInidicator"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/machine_count_text" />
 
     <ImageButton
@@ -47,16 +47,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/colorInidicator"
-        android:layout_width="22dp"
-        android:layout_height="112dp"
-        android:layout_margin="0dp"
-        android:background="@color/labEmpty"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
 
 </android.support.constraint.ConstraintLayout>

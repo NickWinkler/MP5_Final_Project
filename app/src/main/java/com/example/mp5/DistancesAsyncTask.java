@@ -6,6 +6,7 @@ import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.util.JsonWriter;
+import android.view.Gravity;
 import android.widget.Toast;
 
 import com.example.lib.LocationData;
@@ -97,7 +98,6 @@ public class DistancesAsyncTask extends AsyncTask<String, String, String> {
             e.printStackTrace();
             toastMessage = "Error. Try again later.";
         }
-        Toast.makeText(mainActivity, toastMessage, Toast.LENGTH_SHORT).show();
-        mainActivity.updateUI();
+        mainActivity.updateUI(toastMessage);
     }
 }
