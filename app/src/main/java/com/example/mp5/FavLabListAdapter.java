@@ -27,7 +27,7 @@ public class FavLabListAdapter extends LabListAdapter {
             public void onClick(View v) {
                 int itemPosition = labListViewHolder.getAdapterPosition();
                 Toast toast = Toast.makeText(inflater.getContext(), "Flipping Favorite State for " +
-                        DataManager.getFavoriteItems().get(itemPosition), Toast.LENGTH_SHORT);
+                        DataManager.getFavoriteItems().get(itemPosition).getName(), Toast.LENGTH_SHORT);
                 DataManager.removeFavorite(itemPosition);
                 labListViewHolder.adapter.notifyItemRemoved(itemPosition);
                 labListViewHolder.adapter.notifyItemRangeChanged(itemPosition, getItemCount());
